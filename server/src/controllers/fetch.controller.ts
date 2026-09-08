@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { validateUrl } from "../validators/url.validator.js";
+import { instagramProvider } from "../providers/instagram/instagram.provider.js";
 
 export const fetchController = {
     fetch: async (req: Request, res: Response) => {
@@ -13,9 +14,12 @@ export const fetchController = {
             })
         }
 
+        const data = await instagramProvider.getMetadata(url);
+
         res.status(200).json({
             success: true,
-            message: 'Fetch request validated successfully.'
+            message: 'Post fetched successfully.',
+            data
         })
-    }
+    },
 }
