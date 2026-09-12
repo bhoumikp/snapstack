@@ -2,7 +2,7 @@ export type MediaType = 'image' | 'video';
 
 export interface MediaItem {
     type: MediaType;
-    url: string;
+    mediaUrl: string;
     width: number;
     height: number;
     thumbnail?: string;
@@ -24,6 +24,7 @@ export interface InstagramMediaCandidate {
 }
 
 export interface InstagramMedia {
+    id: string;
     media_type: 1 | 2;
 
     image_versions2?: {

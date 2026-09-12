@@ -1,3 +1,4 @@
+import { buildMediaUrl } from "../../utils/media-url.js";
 import { getBestCandidate, getMediaType, getPostType } from "./instagram.media.js";
 import { MediaItem, InstagramCarouselItem, PostMetadata, InstagramMediaCandidate, InstagramMedia} from "./instagram.types.js";
 
@@ -69,10 +70,12 @@ const extractMediaItem = (item: InstagramMedia): MediaItem => {
 
     return {
         type: mediaType,
-        url: bestCandidate.url,
+        mediaUrl: buildMediaUrl(bestCandidate.url, item.id),
         width: bestCandidate.width,
         height: bestCandidate.height,
-        thumbnail: thumbnailCandidate?.url,
+        thumbnail:  thumbnailCandidate
+                ? buildMediaUrl(thumbnailCandidate.url, item.id)
+                : undefined,
     };
 };
 

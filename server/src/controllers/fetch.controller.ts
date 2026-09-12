@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import { validateUrl } from "../validators/url.validator.js";
+import { validatePostUrl } from "../validators/post-url.validator.js";
 import { instagramProvider } from "../providers/instagram/instagram.provider.js";
 
 export const fetchController = {
     fetch: async (req: Request, res: Response) => {
         const {url} = req.body;
         
-        const urlValidation = validateUrl(url);
+        const urlValidation = validatePostUrl(url);
         if(!urlValidation.valid) {
             return res.status(400).json({
                 success: false,

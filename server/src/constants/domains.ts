@@ -1,4 +1,9 @@
-export const ALLOWED_HOSTS = [
+export const ALLOWED_POST_HOSTS = [
     "instagram.com",
     "www.instagram.com",
-] as const;
+] ;
+
+export const ALLOWED_MEDIA_HOSTS = [
+    "instagram.fbom35-1.fna.fbcdn.net",
+    "www.instagram.fbom35-1.fna.fbcdn.net"
+] ;

@@ -1,11 +1,7 @@
 import { ALLOWED_PATH_PREFIXES } from "../constants/paths.js";
+import { ALLOWED_POST_HOSTS } from "../constants/domains.js";
 
-const ALLOWED_HOSTS = [
-    "instagram.com",
-    "www.instagram.com"
-];
-
-export const validateUrl = (url: string) => {
+export const validatePostUrl = (url: string) => {
 	if(!url) {
 		return {
 			valid: false,
@@ -30,7 +26,7 @@ export const validateUrl = (url: string) => {
 		}
 	}
 
-	if(!ALLOWED_HOSTS.includes(parsedUrl.hostname)) {
+	if(!ALLOWED_POST_HOSTS.includes(parsedUrl.hostname)) {
 		return {
 			valid: false,
 			message: "Only Instagram URLs are supported."
