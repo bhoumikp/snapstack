@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Camera, Menu, X } from "lucide-react";
-import { cn } from "../lib/cn";
+import { cn } from "../../lib/cn";
+import Button from "../ui/Button";
 
 export const Navbar = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -33,9 +34,9 @@ export const Navbar = () => {
                     </nav>
 
                     <div className="hidden md:flex items-center space-x-4">
-                        <button className="px-4 py-2 rounded-md bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-colors shadow-sm shadow-primary/20">
+                        <Button variant="primary">
                             Get Started
-                        </button>
+                        </Button>
                     </div>
 
                     {/* Mobile menu button */}

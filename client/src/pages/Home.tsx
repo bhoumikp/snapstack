@@ -1,9 +1,22 @@
 import { ArrowRight, Layers, Zap, Shield } from 'lucide-react';
 import FeatureCard from '../components/FeatureCard';
+import Button from '../components/ui/Button';
+import { useEffect } from 'react';
+import { fetchPost } from '../lib/api';
+import { FetchForm } from '../components/fetch/FetchForm';
 
 export default function Home() {
+
+  useEffect(() => {
+    async function fetch() {
+      await fetchPost("https://www.instagram.com/p/DcVcCsooEpQ")
+    }
+    fetch()
+  }, [])
+
   return (
     <div className="flex flex-col min-h-screen">
+      <FetchForm />
       {/* Hero Section */}
       <section className="relative px-4 pt-32 pb-20 sm:px-6 lg:px-8 flex flex-col items-center text-center overflow-hidden">
         {/* Background gradient blob */}
@@ -23,13 +36,20 @@ export default function Home() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 animate-slide-up" style={{ animationDelay: '300ms' }}>
-          <button className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5">
+          {/* <button className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:-translate-y-0.5">
             Start Designing
             <ArrowRight className="w-4 h-4" />
-          </button>
-          <button className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-secondary text-secondary-foreground font-medium hover:bg-secondary/80 transition-all border border-border">
+          </button> */}
+          <Button variant='glow' className='px-6 py-3 rounded-lg'>
+            Start Designing
+            <ArrowRight className="w-4 h-4" />
+          </Button>
+          {/* <button className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-secondary text-secondary-foreground font-medium hover:bg-secondary/80 transition-all border border-border">
             View Documentation
-          </button>
+          </button> */}
+          <Button variant='secondary' className='px-6 py-3 rounded-lg'>
+            View Documentation
+          </Button>
         </div>
       </section>
 

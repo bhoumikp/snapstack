@@ -1,0 +1,76 @@
+import { useState } from "react";
+import type { PostMetadata } from "../../types/post";
+import { CarouselView } from "./CarouselView";
+import { cn } from "../../lib/cn";
+import Button from "../ui/Button";
+import { getDownloadUrl, getMediaUrl } from "../../lib/media";
+
+export function ResultView({data} : {data: PostMetadata}) {
+    let [currentIndex, setCurrentIndex] = useState(0);
+    const media = data.media[currentIndex];
+
+    return (
+        <div className="flex gap-8 my-4">
+            <div className="flex justify-center size-128">
+                {data.type === 'image' && (
+                    <img 
+                        src={getMediaUrl(media.mediaUrl)} 
+                        alt="preview" 
+                        className="object-contain"
+                    />
+                )}
+                {data.type === 'reel' && (
+                    <video 
+                        controls 
+                        src={getMediaUrl(media.mediaUrl)}
+                        poster={getMediaUrl(media.thumbnail)}
+                    >
+                    </video>
+                )}
+                
+                {data.type === 'carousel' && 
+                    <CarouselView 
+                        data={data} 
+                        currentIndex={currentIndex} 
+                        setCurrentIndex={setCurrentIndex} 
+                    />
+                }
+            </div>
+                
+
+            <div className="w-full space-y-4">
+                <div className="w-full flex flex-wrap gap-4">
+                    {data.type === 'carousel' && data.media.map((media, index) => (
+                        <img 
+                            key={index}
+                            src={media.type === 'image' ? getMediaUrl(media.mediaUrl) : getMediaUrl(media.thumbnail)} 
+                            alt="" 
+                            className={cn('size-32 rounded-md cursor-pointer', currentIndex === index && 'border-3 border-primary')} 
+                            onClick={() => setCurrentIndex(index)}
+                        />
+                    ))}
+                </div>
+
+                <p>{data.type}</p>
+                <p>{data.caption}</p>
+                <p>{data.media.length} items</p>
+
+                <div className="space-x-4">
+                    <Button 
+                        onClick={() => window.open(getDownloadUrl(media.mediaUrl))}
+                    >
+                        Download
+                    </Button>
+
+                    {data.type === 'carousel' && (
+                        <Button>
+                            Download All (PDF)
+                        </Button>
+                    )}
+                    
+                </div>
+
+            </div>
+        </div>
+    )
+}
