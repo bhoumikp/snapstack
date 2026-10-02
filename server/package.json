@@ -18,6 +18,8 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "pdf-lib": "^1.17.1",
+    "sharp": "^0.35.5",
     "tough-cookie": "^6.0.2"
   },
   "devDependencies": {

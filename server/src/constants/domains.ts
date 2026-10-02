@@ -5,5 +5,7 @@ export const ALLOWED_POST_HOSTS = [
 
 export const ALLOWED_MEDIA_HOSTS = [
     "instagram.fbom35-1.fna.fbcdn.net",
-    "www.instagram.fbom35-1.fna.fbcdn.net"
+    "instagram.fbom58-1.fna.fbcdn.net",
+    "www.instagram.fbom35-1.fna.fbcdn.net",
+    "www.instagram.fbom58-1.fna.fbcdn.net"
 ] ;

@@ -4,6 +4,6 @@ export const errorMiddleware : ErrorRequestHandler = (err, _req, res, _next) => 
     console.log(err);
     res.status(500).json({
         success: false,
-        message: err.message,
+        message: err.message || 'Internal Server Error',
     })
 }
