@@ -9,7 +9,7 @@ export default function MainLayout() {
       <Navbar />
 
       {/* Main Content Area */}
-      <main className="flex-grow pt-16 animate-fade-in">
+      <main className="flex-grow animate-fade-in">
         <Outlet />
       </main>
 

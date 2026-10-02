@@ -38,7 +38,8 @@ export function FetchForm () {
         <div>
             <form 
                 onSubmit={(e) => handleSubmit(e)}
-                className="flex items-center justify-between gap-4 border px-4 rounded-md">
+                className="flex items-center justify-between gap-4 border px-4 sticky top-0 lg:top-5 glass z-50 bg-background"
+            >
                 <input 
                     type="text" 
                     placeholder="Paste Instagram Post URL"
